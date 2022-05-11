@@ -272,21 +272,28 @@ h6 {
   transition: 0.3s;
 }
 .tabs__title {
-  outline: 1px solid rgb(107, 107, 107);
-  border: 3px solid #FBE9D8;
-  width: 15px;
-  height: 15px;
+  border: 1px solid rgb(107, 107, 107);
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   margin-right: 15px;
   margin-left: 15px;
   transition: 0.3s;
-  transition: 0.3s;
+}
+.tabs__title._tab-active::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  background: rgb(255, 140, 63);
+  border-radius: 50%;
+  transform: scale(1.1);
 }
 .tabs__title._tab-active {
-  outline: 1px solid #000;
-  background: rgb(255, 140, 63);
+  border: 1px solid #000;
   background-size: 10px 10px;
-  transition: 0.3s;
   transform: scale(1.1);
 }
 .tabs__content {
@@ -2811,16 +2818,6 @@ label {
     transition: 0.2s;
   }
 }
-@-moz-keyframes text-color {
-  50% {
-    color: #000000;
-  }
-}
-@-webkit-keyframes text-color {
-  50% {
-    color: #000000;
-  }
-}
 @keyframes text-color {
   50% {
     color: #000000;
@@ -2883,30 +2880,6 @@ label {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
-@-moz-keyframes three-circle {
-  40% {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-    border: 1px solid rgb(0, 0, 0);
-  }
-  70% {
-    border: 1px solid rgb(0, 0, 0);
-  }
-}
-@-webkit-keyframes three-circle {
-  40% {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-    border: 1px solid rgb(0, 0, 0);
-  }
-  70% {
-    border: 1px solid rgb(0, 0, 0);
-  }
-}
 @keyframes three-circle {
   40% {
     -webkit-transform: scale(1.1);
@@ -2932,30 +2905,6 @@ label {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
-@-moz-keyframes two-circle {
-  30% {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-    border: 1px solid rgb(0, 0, 0);
-  }
-  80% {
-    border: 1px solid rgb(0, 0, 0);
-  }
-}
-@-webkit-keyframes two-circle {
-  30% {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-    border: 1px solid rgb(0, 0, 0);
-  }
-  80% {
-    border: 1px solid rgb(0, 0, 0);
-  }
-}
 @keyframes two-circle {
   30% {
     -webkit-transform: scale(1.1);
@@ -2977,30 +2926,6 @@ label {
   animation-name: one-circle;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-}
-@-moz-keyframes one-circle {
-  20% {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-    border: 1px solid rgb(0, 0, 0);
-  }
-  90% {
-    border: 1px solid rgb(0, 0, 0);
-  }
-}
-@-webkit-keyframes one-circle {
-  20% {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1);
-    border: 1px solid rgb(0, 0, 0);
-  }
-  90% {
-    border: 1px solid rgb(0, 0, 0);
-  }
 }
 @keyframes one-circle {
   20% {
@@ -3563,10 +3488,31 @@ label {
   min-height: 60px;
 }
 
-.popap-no-animation .absolute {
+.popap-no-animation {
+  animation-fill-mode: forwards;
+}
+.popap-no-animation:target {
+  animation-name: popap;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-direction: forwards;
+}
+@keyframes popap {
+  20% {
+    opacity: 1;
+    z-index: 999;
+  }
+  90% {
+    opacity: 1;
+    z-index: 999;
+  }
+}
+
+.absolute {
   position: absolute;
 }
-.popap-no-animation .popap-no-fix-size {
+
+.popap-no-fix-size {
   margin-top: 200px;
 }
 
